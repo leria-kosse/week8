@@ -1,6 +1,6 @@
 # (_TODO: fill in the title of this assignment here!_)
 
-Authors: (_TODO: fill in your names here!_)
+Authors: Valeriia Kosse & 
 
 ## Build commands
 
@@ -10,6 +10,9 @@ Authors: (_TODO: fill in your names here!_)
 
 ## Resources
 
-*   (_TODO: fill in resources here!_)
-*   ...
-*   ...
+*   Lab Page: https://osera.cs.grinnell.edu/ttap/data-structures-labs/trees.html
+*   Theory: https://osera.cs.grinnell.edu/ttap/data-structures/hierarchical-structures.html
+*   
+
+
+## 

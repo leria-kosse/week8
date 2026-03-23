@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * A generic binary tree implementation.
  */
-public class Tree<T> {
+public class Tree<T extends Comparable<T>>{
     /**
      * A node of the binary tree.
      */
@@ -86,16 +86,30 @@ public class Tree<T> {
 
     ///// Part 1: Contains
 
+    private boolean containsH(Node<T> node, T value) {
+        if (node == null) {
+            return false;
+        } else {
+            if (node.value.compareTo(value) == 0) {
+                return true;
+            } else {
+                return (false || (containsH(node.left, value) || (containsH(node.right, value))));
+            }
+
+        }
+    }
+
     /**
      * @param value the value to search for
      * @return true iff the tree contains <code>value</code>
      */
     public boolean contains(T value) {
-        throw new UnsupportedOperationException();
+        return containsH(root, value);
     }
 
     ///// Part 2: Traversals
 
+     
     /**
      * @return the elements of this tree collected via an in-order traversal
      */
