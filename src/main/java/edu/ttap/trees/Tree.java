@@ -1,11 +1,12 @@
 package edu.ttap.trees;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A generic binary tree implementation.
  */
-public class Tree<T extends Comparable<T>>{
+public class Tree<T extends Comparable<T>> {
     /**
      * A node of the binary tree.
      */
@@ -16,7 +17,7 @@ public class Tree<T extends Comparable<T>>{
 
         /**
          * @param value the value of the node
-         * @param left the left child of the node
+         * @param left  the left child of the node
          * @param right the right child of the node
          */
         Node(T value, Node<T> left, Node<T> right) {
@@ -50,25 +51,22 @@ public class Tree<T extends Comparable<T>>{
     public static Tree<Integer> makeSampleTree() {
         Tree<Integer> tree = new Tree<Integer>();
         tree.root = new Node<>(
-            5,
-            new Node<>(2,
-                new Node<>(1),
-                new Node<>(3)
-            ),
-            new Node<>(8,
-                new Node<>(7,
-                    new Node<>(6),
-                    null),
-                new Node<>(9,
-                    null,
-                    new Node<>(10)))
-        );
+                5,
+                new Node<>(2,
+                        new Node<>(1),
+                        new Node<>(3)),
+                new Node<>(8,
+                        new Node<>(7,
+                                new Node<>(6),
+                                null),
+                        new Node<>(9,
+                                null,
+                                new Node<>(10))));
         return tree;
     }
 
-
     /**
-     * @param node the root of the tree 
+     * @param node the root of the tree
      * @return the number elements found in this tree rooted at node
      */
     private int sizeH(Node<T> node) {
@@ -90,10 +88,10 @@ public class Tree<T extends Comparable<T>>{
         if (node == null) {
             return false;
         } else {
-            if (node.value.compareTo(value) == 0) {
+            if (node.value.equals(value)) {
                 return true;
             } else {
-                return (false || (containsH(node.left, value) || (containsH(node.right, value))));
+                return containsH(node.left, value) || containsH(node.right, value);
             }
 
         }
@@ -109,33 +107,67 @@ public class Tree<T extends Comparable<T>>{
 
     ///// Part 2: Traversals
 
-     
     /**
      * @return the elements of this tree collected via an in-order traversal
      */
     public List<T> toListInorder() {
-        throw new UnsupportedOperationException();
+        List<T> elements = new ArrayList<>();
+        inOrder(root, elements);
+        return elements;
+    }
+
+    public void inOrder(Node<T> n, List<T> elements) {
+        if (n == null) {
+            return;
+        }
+        inOrder(n.left, elements);
+        elements.add(n.value);
+        inOrder(n.right, elements);
     }
 
     /**
      * @return the elements of this tree collected via a pre-order traversal
      */
     public List<T> toListPreorder() {
-        throw new UnsupportedOperationException();
+        List<T> elements = new ArrayList<>();
+        preOrder(root, elements);
+        return elements;
+    }
+
+    public void preOrder(Node<T> n, List<T> elements) {
+        if (n == null) {
+            return;
+        }
+
+        elements.add(n.value);
+        preOrder(n.left, elements);
+        preOrder(n.right, elements);
     }
 
     /**
      * @return the elements of this tree collected via a post-order traversal
      */
     public List<T> toListPostorder() {
-        throw new UnsupportedOperationException();
+        List<T> elements = new ArrayList<>();
+        postOrder(root, elements);
+        return elements;
+    }
+
+    // post order, left to right to root
+    public void postOrder(Node<T> n, List<T> elements) {
+        if (n == null) {
+            return;
+        }
+        postOrder(n.left, elements);
+        postOrder(n.right, elements);
+        elements.add(n.value);
     }
 
     ///// Part 3: Stringifying Trees
-   
+
     /**
      * @return a string represent of this tree in the form, "[x1, ..., xk]."
-     * The order of the elements is left unspecified.
+     *         The order of the elements is left unspecified.
      */
     @Override
     public String toString() {
@@ -143,7 +175,7 @@ public class Tree<T extends Comparable<T>>{
     }
 
     ///// Extra: Pretty Printing
-    
+
     /**
      * @return a string represent of this tree in bulleted list form.
      */
@@ -153,6 +185,7 @@ public class Tree<T extends Comparable<T>>{
 
     /**
      * The main driver for this program
+     * 
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
