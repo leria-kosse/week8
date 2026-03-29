@@ -1,6 +1,6 @@
-# (_TODO: fill in the title of this assignment here!_)
+# Week 8 Labs & Project
 
-Authors: Valeriia Kosse & 
+Authors: Valeriia Kosse & Robel Gebeyehu & Dieu To
 
 ## Build commands
 
@@ -10,9 +10,11 @@ Authors: Valeriia Kosse &
 
 ## Resources
 
-*   Lab Page: https://osera.cs.grinnell.edu/ttap/data-structures-labs/trees.html
+*   Lab Page Trees: https://osera.cs.grinnell.edu/ttap/data-structures-labs/trees.html
 *   Theory: https://osera.cs.grinnell.edu/ttap/data-structures/hierarchical-structures.html
-*   
+*   Lab Page BST: https://osera.cs.grinnell.edu/ttap/data-structures-labs/bsts.html
+*   Project Page: https://osera.cs.grinnell.edu/ttap/data-structures-labs/decompression.html
+
 
 
 ## 
