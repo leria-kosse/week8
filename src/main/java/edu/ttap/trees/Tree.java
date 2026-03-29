@@ -171,8 +171,12 @@ public class Tree<T extends Comparable<T>> {
      */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+        List<T> elements = new ArrayList<>();
+        preOrder(root, elements);
+        return elements.toString();
     }
+
+    
 
     ///// Extra: Pretty Printing
 

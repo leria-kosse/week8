@@ -74,6 +74,14 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         throw new UnsupportedOperationException();
     }
 
+    public void insertH(Node<T> n) {
+        if (n == null) {
+            return;
+        }
+        
+    }
+
+
     ///// Part 2: Contains
    
     /**
