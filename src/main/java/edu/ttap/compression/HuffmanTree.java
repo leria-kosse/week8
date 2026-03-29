@@ -1,5 +1,6 @@
 package edu.ttap.compression;
-
+import java.util.ArrayList;
+import java.util.List;
 /**
  * A HuffmanTree derives a space-efficient coding of a collection of byte
  * values.
@@ -17,14 +18,27 @@ public class HuffmanTree {
     /**
      * Constructs a new HuffmanTree from the given file.
      * @param in the input file (as a BitInputStream)
-     */
+    */
+
     public HuffmanTree(BitInputStream in) {
-        // TODO: fill me in!
+        int[] freq = new int[256];
+        int value;
+
+        while ((value = in.readBits(8)) != -1) {
+            freq[value]++;
+        }
+
+        for (int i = 0; i < freq.length; i++){
+            
+        }
+        // set up order in pre-order from highest freq to lowest freq
+        // construct huffman tree
     }
+
 
     /**
      * Decodes a stream of huffman codes from a file given as a stream of
-     * bits into their uncompressed form, saving the results to the given
+     * bits into their uncompressed form, saving the results to thSSe given
      * output stream. Note that the EOF character is not written to out
      * because it is not a valid 8-bit chunk (it is 9 bits).
      * @param in the file to decompress.

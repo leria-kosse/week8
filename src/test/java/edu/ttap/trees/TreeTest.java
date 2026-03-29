@@ -60,6 +60,24 @@ public class TreeTest {
     }
 
     @Test
+    public void toTestPrettyString() {
+        Tree<Integer> t = Tree.makeSampleTree();
+
+        String expected = 
+        "- 5\n" +
+        "  - 2\n" +
+        "    - 1\n" +
+        "    - 3\n" +
+        "  - 8\n" +
+        "    - 7\n" +
+        "      - 6\n" +
+        "    - 9\n" +
+        "      - 10\n";
+
+        assertEquals(expected, t.toPrettyString());
+    }
+
+    @Test
     public void sampleTreeToStringTest() {
         Tree<Integer> sampleTree = Tree.makeSampleTree();
         assertEquals("[5, 2, 1, 3, 8, 7, 6, 9, 10]",

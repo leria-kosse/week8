@@ -116,7 +116,7 @@ public class Tree<T extends Comparable<T>> {
         return elements;
     }
 
-    public void inOrder(Node<T> n, List<T> elements) {
+    private void inOrder(Node<T> n, List<T> elements) {
         if (n == null) {
             return;
         }
@@ -154,7 +154,7 @@ public class Tree<T extends Comparable<T>> {
     }
 
     // post order, left to right to root
-    public void postOrder(Node<T> n, List<T> elements) {
+    private void postOrder(Node<T> n, List<T> elements) {
         if (n == null) {
             return;
         }
@@ -184,7 +184,20 @@ public class Tree<T extends Comparable<T>> {
      * @return a string represent of this tree in bulleted list form.
      */
     public String toPrettyString() {
-        throw new UnsupportedOperationException();
+        return pretty_Helper(root, 0);
+    }
+
+    public String pretty_Helper (Node<T> node, int depth) {
+        if (node == null) {
+            return "";
+        }
+
+        String pretty = "  ".repeat(depth);
+
+        return pretty + "- " + node.value + "\n" + 
+        pretty_Helper(node.left, depth + 1) + 
+        pretty_Helper(node.right, depth + 1); 
+
     }
 
     /**
