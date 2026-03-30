@@ -66,19 +66,33 @@ public class HuffmanTree {
 
     /**
      * Decodes a stream of huffman codes from a file given as a stream of
-     * bits into their uncompressed form, saving the results to thSSe given
+     * bits into their uncompressed form, saving the results to the given
      * output stream. Note that the EOF character is not written to out
      * because it is not a valid 8-bit chunk (it is 9 bits).
      * 
-     * @param in  the file to decompress.
+     * @param in the file to decompress.
      * @param out the file to write the decompressed output to.
      */
     public void decode(BitInputStream in, BitOutputStream out) {
         // TODO: fill me in!
+        HNode current = root;
 
         while (true) {
-            
-            int bit = in.readBits(9);
+            int bit = in.readBit();
+
+            if(bit == 0){
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+
+            if(current.left == null && current.right == null){
+                if(current.value == 256){
+                    break;
+                }
+                out.writeBits(current.value, 8); 
+                current = root;
+            }
 
         }
     }
