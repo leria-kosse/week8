@@ -16,7 +16,7 @@ Authors: Valeriia Kosse & Robel Gebeyehu & Dieu To
 *   Project Page: https://osera.cs.grinnell.edu/ttap/data-structures-labs/decompression.html
 *   Huffmann Trees: https://en.wikipedia.org/wiki/Huffman_coding
 *   VS code functionality + Quick Fix
-*   Huffmann Tree explnation / : https://www.geeksforgeeks.org/java/huffman-coding-java/
+*   Huffmann Tree explanation : https://www.geeksforgeeks.org/java/huffman-coding-java/
 
 ## Changelog
 
