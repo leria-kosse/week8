@@ -15,7 +15,9 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     private static class Node<T> {
         public T value;
+        
         public Node<T> left;
+        
         public Node<T> right;
 
         /**
@@ -83,7 +85,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     /**
      * Inserts the given value into this binary search tree.
      * 
-     * @param v the value to insert
+     * @param n is the node to insert
+     * @param value is the value to insert
      */
     public void insertH(Node<T> n, T value) {
         if (n.value.compareTo(value) > 0) {
@@ -108,10 +111,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      * @return true iff this tree contains <code>v</code>
      */
     public boolean contains(T v) {
-        return contains_Helper(root, v);
+        return containsHelper(root, v);
     }
 
-    private boolean contains_Helper(Node<T> node, T v) {
+    private boolean containsHelper(Node<T> node, T v) {
         if (node == null) {
             return false;
         }
@@ -122,9 +125,9 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             return true;
         } else if (compare > 0) {
 
-            return contains_Helper(node.left, v);
+            return containsHelper(node.left, v);
         } else {
-            return contains_Helper(node.right, v);
+            return containsHelper(node.right, v);
         }
     }
 

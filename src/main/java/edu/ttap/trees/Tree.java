@@ -7,12 +7,16 @@ import java.util.List;
  * A generic binary tree implementation.
  */
 public class Tree<T extends Comparable<T>> {
+
     /**
      * A node of the binary tree.
      */
     public static class Node<T> {
+
         public T value;
+
         public Node<T> left;
+
         public Node<T> right;
 
         /**
@@ -33,8 +37,6 @@ public class Tree<T extends Comparable<T>> {
             this(value, null, null);
         }
     }
-
-    ///// From the reading...
 
     private Node<T> root;
 
@@ -77,12 +79,14 @@ public class Tree<T extends Comparable<T>> {
         }
     }
 
-    /** @return the number of elements in the tree */
+    /**
+     * Returns the number of elements in the tree.
+     *
+     * @return the number of elements in the tree
+     */
     public int size() {
         return sizeH(root);
     }
-
-    ///// Part 1: Contains
 
     private boolean containsH(Node<T> node, T value) {
         if (node == null) {
@@ -93,7 +97,6 @@ public class Tree<T extends Comparable<T>> {
             } else {
                 return containsH(node.left, value) || containsH(node.right, value);
             }
-
         }
     }
 
@@ -104,8 +107,6 @@ public class Tree<T extends Comparable<T>> {
     public boolean contains(T value) {
         return containsH(root, value);
     }
-
-    ///// Part 2: Traversals
 
     /**
      * @return the elements of this tree collected via an in-order traversal
@@ -134,11 +135,16 @@ public class Tree<T extends Comparable<T>> {
         return elements;
     }
 
+    /**
+     * Performs a pre-order traversal of the tree.
+     *
+     * @param n the current node
+     * @param elements the list to add elements to
+     */
     public void preOrder(Node<T> n, List<T> elements) {
         if (n == null) {
             return;
         }
-
         elements.add(n.value);
         preOrder(n.left, elements);
         preOrder(n.right, elements);
@@ -153,7 +159,6 @@ public class Tree<T extends Comparable<T>> {
         return elements;
     }
 
-    // post order, left to right to root
     private void postOrder(Node<T> n, List<T> elements) {
         if (n == null) {
             return;
@@ -162,8 +167,6 @@ public class Tree<T extends Comparable<T>> {
         postOrder(n.right, elements);
         elements.add(n.value);
     }
-
-    ///// Part 3: Stringifying Trees
 
     /**
      * @return a string represent of this tree in the form, "[x1, ..., xk]."
@@ -176,33 +179,33 @@ public class Tree<T extends Comparable<T>> {
         return elements.toString();
     }
 
-    
-
-    ///// Extra: Pretty Printing
-
     /**
      * @return a string represent of this tree in bulleted list form.
      */
     public String toPrettyString() {
-        return pretty_Helper(root, 0);
-    }
-
-    public String pretty_Helper (Node<T> node, int depth) {
-        if (node == null) {
-            return "";
-        }
-
-        String pretty = "  ".repeat(depth);
-
-        return pretty + "- " + node.value + "\n" + 
-        pretty_Helper(node.left, depth + 1) + 
-        pretty_Helper(node.right, depth + 1); 
-
+        return prettyHelper(root, 0);
     }
 
     /**
-     * The main driver for this program
-     * 
+     * Recursive helper for pretty printing the tree.
+     *
+     * @param node the current node
+     * @param depth the current depth in the tree
+     * @return a bulleted string representation of the tree
+     */
+    private String prettyHelper(Node<T> node, int depth) {
+        if (node == null) {
+            return "";
+        }
+        String pretty = "  ".repeat(depth);
+        return pretty + "- " + node.value + "\n"
+                + prettyHelper(node.left, depth + 1)
+                + prettyHelper(node.right, depth + 1);
+    }
+
+    /**
+     * The main driver for this program.
+     *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {

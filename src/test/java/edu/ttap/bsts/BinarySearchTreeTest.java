@@ -56,7 +56,7 @@ public class BinarySearchTreeTest {
         assertArrayEquals(
                 (Object[]) new Integer[] { 2, 3, 4, 5, 6 },
                 BinarySearchTree.<Integer>sort(
-                        java.util.Arrays.asList( 2, 3, 4, 5, 6 )).toArray());
+                        java.util.Arrays.asList(2, 3, 4, 5, 6)).toArray());
     }
 
     @Test

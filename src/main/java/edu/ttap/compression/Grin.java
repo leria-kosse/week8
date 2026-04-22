@@ -21,9 +21,7 @@ public class Grin {
         int header = in.readBits(32);
         if (header != 0x736) {
             throw new IllegalArgumentException("Not a valid .grin input file.");
-        } 
-        //huffmann tree from the inp
-        else {
+        } else {
             HuffmanTree tree = new HuffmanTree(in);
             tree.decode(in, out);
         }
@@ -40,7 +38,7 @@ public class Grin {
         if (args.length != 2) {
             throw new IllegalArgumentException();
         } else {
-            decode(args[0], args[1]);   
+            decode(args[0], args[1]);
         }
     }
 }

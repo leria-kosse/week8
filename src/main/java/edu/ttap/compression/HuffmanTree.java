@@ -1,8 +1,5 @@
 package edu.ttap.compression;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A HuffmanTree derives a space-efficient coding of a collection of byte
  * values.
@@ -26,6 +23,7 @@ public class HuffmanTree {
         int value;
 
         HNode left;
+
         HNode right;
 
         HNode(int value) {
@@ -44,7 +42,7 @@ public class HuffmanTree {
     private HNode root;
 
     /**
-     * Make
+     * @param in as the inputStream you are passing in
      */
     public HuffmanTree(BitInputStream in) {
         root = deserialize(in);
@@ -55,9 +53,7 @@ public class HuffmanTree {
         if (bit == 0) {
             int value = in.readBits(9);
             return new HNode(value);
-        }
-
-        else {
+        } else {
             HNode left = deserialize(in);
             HNode right = deserialize(in);
             return new HNode(left, right);
@@ -70,27 +66,26 @@ public class HuffmanTree {
      * output stream. Note that the EOF character is not written to out
      * because it is not a valid 8-bit chunk (it is 9 bits).
      * 
-     * @param in the file to decompress.
+     * @param in  the file to decompress.
      * @param out the file to write the decompressed output to.
      */
     public void decode(BitInputStream in, BitOutputStream out) {
-        // TODO: fill me in!
         HNode current = root;
 
         while (true) {
             int bit = in.readBit();
 
-            if(bit == 0){
+            if (bit == 0) {
                 current = current.left;
             } else {
                 current = current.right;
             }
 
-            if(current.left == null && current.right == null){
-                if(current.value == 256){
+            if (current.left == null && current.right == null) {
+                if (current.value == 256) {
                     break;
                 }
-                out.writeBits(current.value, 8); 
+                out.writeBits(current.value, 8);
                 current = root;
             }
 
